@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Button, Icon, Input } from 'react-native-elements';
+import { LoginSceneForm } from './components/LoginSceneForm';
 
 export const LoginScene = () => {
   return (
@@ -18,19 +18,7 @@ export const LoginScene = () => {
         <Text>Logo</Text>
       </View>
       <View style={styles.centerContainer}>
-        <Input
-          label="Email"
-          placeholder="Digite seu Email aqui"
-          leftIcon={<Icon name="mail" size={24} color="black" />}
-        />
-        <Input
-          label="Senha"
-          placeholder="Digite sua Senha Aqui"
-          leftIcon={<Icon name="lock" size={24} color="black" />}
-        />
-        <View style={{ flex: 1 / 3, alignItems: 'center', paddingTop: 10 }}>
-          <Button title={'Entrar'} />
-        </View>
+        <LoginSceneForm />
       </View>
       <View style={styles.topContainer}>
         <View style={{ flex: 1, alignItems: 'center' }}>
