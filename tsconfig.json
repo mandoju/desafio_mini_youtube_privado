@@ -20,7 +20,9 @@
     "paths": {
       "@assets/*": ["assets/*"],
       "@components/*": ["src/components/*"],
-      "@scenes/*": ["src/scenes/*"]
+      "@scenes/*": ["src/scenes/*"],
+      "@ducks/*": ["src/ducks/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }
