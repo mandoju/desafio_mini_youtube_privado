@@ -22,6 +22,7 @@ module.exports = function (api) {
             '@scenes': './src/scenes',
             '@ducks': './src/ducks',
             '@utils': './src/utils',
+            '@models': './src/models',
           },
         },
       ],
