@@ -20,6 +20,8 @@ module.exports = function (api) {
             '@components': './src/components',
             '@assets': './assets',
             '@scenes': './src/scenes',
+            '@ducks': './src/ducks',
+            '@utils': './src/utils',
           },
         },
       ],
