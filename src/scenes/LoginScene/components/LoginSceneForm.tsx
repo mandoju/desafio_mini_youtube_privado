@@ -72,9 +72,8 @@ const LoginSceneFormFormik = withFormik<
       .required('Preencha o campo de senha'),
   }),
 
-  handleSubmit: ({ login, password }, { props, setSubmitting }) => {
-    console.log('login', login);
-    const callback = () => Actions.replace('login');
+  handleSubmit: ({ login, password }, { props }) => {
+    const callback = () => Actions.replace('videoList');
     props.submitLogin({ login, password, callback });
   },
 })(LoginSceneFormWithoutFormik);
