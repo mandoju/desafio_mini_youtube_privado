@@ -1,6 +1,11 @@
 import { RootStateType } from '@ducks/index';
 import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+} from 'react-native';
 import { useSelector } from 'react-redux';
 import { VideoListItem } from '../../components/video/VideoListItem';
 import { useDispatch } from 'react-redux';
@@ -14,6 +19,14 @@ export const VideoListScene = () => {
   useEffect(() => {
     if (videos.length == 0) dispatch(getVideos({ pageIndex: 0 }));
   }, []);
+
+  if (videos.length == 0) {
+    return (
+      <SafeAreaView style={[styles.container, { justifyContent: 'center' }]}>
+        <ActivityIndicator size={'large'} />
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
