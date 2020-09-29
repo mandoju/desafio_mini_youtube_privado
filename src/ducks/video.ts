@@ -90,3 +90,9 @@ export const favoriteVideo = ({ id }: { id: string }) => {
     }
   };
 };
+
+export const autoFavoriteVideos = ({ videos }: { videos: Video[] }) => {
+  return async (dispatch: any) => {
+    dispatch({ type: SET_FAVORITE_VIDEOS, payload: videos });
+  };
+};

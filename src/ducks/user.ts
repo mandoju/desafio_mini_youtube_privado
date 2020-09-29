@@ -41,3 +41,19 @@ export const submitLogin = ({
     }, 5000);
   };
 };
+
+export const autoLogin = ({
+  login,
+  callback,
+}: {
+  login: string;
+  callback: () => void;
+}) => {
+  return async (dispatch: any) => {
+    dispatch({ type: INIT_LOGIN });
+    setTimeout(async function () {
+      await AsyncStorage.setItem('login', login);
+      dispatch({ type: LOGIN_USER, payload: login }, callback());
+    }, 5000);
+  };
+};

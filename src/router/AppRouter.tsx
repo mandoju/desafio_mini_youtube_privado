@@ -2,12 +2,20 @@ import React from 'react';
 import { Router, Scene, Stack, Tabs } from 'react-native-router-flux';
 import { LoginScene } from '@scenes/LoginScene';
 import { VideoListScene } from '@scenes/VideoListScene/VideoListScene';
+import { AuthScene } from '@scenes/AuthScene/AuthScene';
 import AppTabBar from '@components/router/AppTabBar';
 
 export const AppRouter = () => {
   return (
     <Router>
       <Stack key="root">
+        <Scene
+          key="auth"
+          component={AuthScene}
+          title="Login"
+          hideNavBar={true}
+          initial={true}
+        />
         <Scene
           key="login"
           component={LoginScene}
@@ -20,6 +28,7 @@ export const AppRouter = () => {
             component={VideoListScene}
             title="Lista de Vídeos"
             hideNavBar={true}
+            initial={true}
           />
           <Scene
             key="favoriteListe"
