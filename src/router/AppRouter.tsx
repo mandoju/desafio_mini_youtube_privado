@@ -10,7 +10,7 @@ export const AppRouter = () => {
           key="login"
           component={LoginScene}
           title="Login"
-          initial={true}
+          hideNavBar={true}
         />
       </Stack>
     </Router>

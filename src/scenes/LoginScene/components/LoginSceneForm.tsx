@@ -5,7 +5,7 @@ import { Input, Icon, Button } from 'react-native-elements';
 import * as Yup from 'yup';
 
 interface LoginSceneFormValues {
-  email: string;
+  login: string;
   password: string;
 }
 
@@ -19,12 +19,12 @@ export const LoginSceneFormWithoutFormik = ({
   return (
     <View style={{}}>
       <Input
-        label="Email"
-        placeholder="Digite seu Email aqui"
-        leftIcon={<Icon name="mail" size={24} color="black" />}
-        value={values.email}
-        onChangeText={(text) => setFieldValue('email', text)}
-        errorMessage={touched.email ? errors.email : ''}
+        label="Usuário"
+        placeholder="Digite seu Login aqui"
+        leftIcon={<Icon name="person" size={24} color="black" />}
+        value={values.login}
+        onChangeText={(text) => setFieldValue('login', text)}
+        errorMessage={touched.login ? errors.login : ''}
       />
       <Input
         label="Senha"
@@ -44,12 +44,12 @@ export const LoginSceneFormWithoutFormik = ({
 };
 
 export const LoginSceneForm = withFormik({
-  mapPropsToValues: () => ({ email: '', password: '' }),
+  mapPropsToValues: () => ({ login: '', password: '' }),
 
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email('Digite um e-mail válido')
-      .required('Preencha o campo de e-mail'),
+    login: Yup.string()
+      .min(4, 'O usuário deve ter no mínimo 4 caracteres')
+      .required('Preencha o campo de usuário'),
     password: Yup.string()
       .min(6, 'A senha deve ter no mínimo 6 caracteres')
       .required('Preencha o campo de senha'),
