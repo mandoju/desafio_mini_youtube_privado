@@ -1,11 +1,33 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { RootStateType } from '@ducks/index';
+import React, { useEffect, useState } from 'react';
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
+import { VideoListItem } from '../../components/video/VideoListItem';
+import { useDispatch } from 'react-redux';
+import video, { getVideos } from '@ducks/video';
 
 export const VideoListScene = () => {
+  const videos = useSelector((state: RootStateType) => state.video.videos);
+  const [pageIndex, setPageIndex] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (videos.length == 0) dispatch(getVideos({ pageIndex: 0 }));
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Tela com lista de Vídeos</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={videos}
+        renderItem={({ item }) => <VideoListItem video={item} />}
+        onEndReached={() => {
+          if (pageIndex < 2) {
+            dispatch(getVideos({ pageIndex: pageIndex + 1 }));
+            setPageIndex(pageIndex + 1);
+          }
+        }}
+      />
+    </SafeAreaView>
   );
 };
 
@@ -13,7 +35,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

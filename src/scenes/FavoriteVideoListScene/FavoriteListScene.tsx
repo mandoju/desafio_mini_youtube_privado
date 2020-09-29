@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export const LoginScene = () => {
+export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Tela de Login</Text>
+      <Text>Tela mostrando lista de vídeos favoritos</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

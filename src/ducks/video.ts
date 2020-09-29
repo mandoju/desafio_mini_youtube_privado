@@ -40,7 +40,7 @@ export const getVideos = ({
   pageIndex,
 }: {
   pageIndex: number;
-  callback: () => void;
+  callback?: () => void;
 }) => {
   return async (dispatch: any, getState: () => RootStateType) => {
     dispatch({ type: START_LOADING_MORE_VIDEOS });
