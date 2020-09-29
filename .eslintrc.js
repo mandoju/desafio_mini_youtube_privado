@@ -101,6 +101,7 @@ module.exports = {
           '@scenes/*',
           '@ducks/*',
           '@utils/*',
+          '@models/*',
         ],
       },
     ],
