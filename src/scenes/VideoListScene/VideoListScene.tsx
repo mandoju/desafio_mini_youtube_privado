@@ -13,11 +13,14 @@ import video, { getVideos } from '@ducks/video';
 
 export const VideoListScene = () => {
   const videos = useSelector((state: RootStateType) => state.video.videos);
+  const loading = useSelector(
+    (state: RootStateType) => state.video.loadingMoreVideos,
+  );
   const [pageIndex, setPageIndex] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (videos.length == 0) dispatch(getVideos({ pageIndex: 0 }));
+    if (videos.length == 0 && !loading) dispatch(getVideos({ pageIndex: 0 }));
   }, []);
 
   if (videos.length == 0) {
