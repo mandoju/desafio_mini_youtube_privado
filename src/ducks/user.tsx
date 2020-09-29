@@ -25,17 +25,17 @@ export default (state = INITIAL_STATE, action: AnyAction): UserDuck => {
 };
 
 export const submitLogin = ({
-  username,
+  login,
   callback,
 }: {
-  username: string;
+  login: string;
   password: string;
   callback: () => void;
 }) => {
   return async (dispatch: any) => {
     dispatch({ type: INIT_LOGIN });
     setTimeout(function () {
-      dispatch({ type: LOGIN_USER, payload: username }, callback());
+      dispatch({ type: LOGIN_USER, payload: login }, callback());
     }, 5000);
   };
 };

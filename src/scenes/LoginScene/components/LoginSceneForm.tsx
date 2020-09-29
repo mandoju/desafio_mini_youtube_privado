@@ -3,10 +3,23 @@ import React from 'react';
 import { View } from 'react-native';
 import { Input, Icon, Button } from 'react-native-elements';
 import * as Yup from 'yup';
+import { connect } from 'react-redux';
+import { submitLogin } from '@ducks/user';
+import { Actions } from 'react-native-router-flux';
+import { RootStateType } from '@ducks/index';
 
 interface LoginSceneFormValues {
   login: string;
   password: string;
+}
+
+interface LoginSceneFormWithoutFormikProps {
+  submitLogin: (params: {
+    login: string;
+    password: string;
+    callback: () => void;
+  }) => Promise<void>;
+  loading: boolean;
 }
 
 export const LoginSceneFormWithoutFormik = ({
@@ -15,7 +28,8 @@ export const LoginSceneFormWithoutFormik = ({
   handleSubmit,
   setFieldValue,
   touched,
-}: FormikProps<LoginSceneFormValues>) => {
+  loading,
+}: FormikProps<LoginSceneFormValues> & LoginSceneFormWithoutFormikProps) => {
   return (
     <View style={{}}>
       <Input
@@ -36,14 +50,17 @@ export const LoginSceneFormWithoutFormik = ({
       />
       <View style={{ flex: 0, paddingTop: 10, alignItems: 'center' }}>
         <View style={{ flex: 0, width: '33%' }}>
-          <Button title={'Entrar'} onPress={handleSubmit} />
+          <Button title={'Entrar'} onPress={handleSubmit} loading={loading} />
         </View>
       </View>
     </View>
   );
 };
 
-export const LoginSceneForm = withFormik({
+const LoginSceneFormFormik = withFormik<
+  LoginSceneFormWithoutFormikProps,
+  LoginSceneFormValues
+>({
   mapPropsToValues: () => ({ login: '', password: '' }),
 
   validationSchema: Yup.object().shape({
@@ -55,7 +72,18 @@ export const LoginSceneForm = withFormik({
       .required('Preencha o campo de senha'),
   }),
 
-  handleSubmit: (values) => {
-    console.log(values);
+  handleSubmit: ({ login, password }, { props, setSubmitting }) => {
+    console.log('login', login);
+    const callback = () => Actions.replace('login');
+    props.submitLogin({ login, password, callback });
   },
 })(LoginSceneFormWithoutFormik);
+
+const mapStateToProps = (state: RootStateType) => {
+  const loading = state.user.loadingLogin;
+  return { loading };
+};
+
+export const LoginSceneForm = connect(mapStateToProps, { submitLogin })(
+  LoginSceneFormFormik,
+);
