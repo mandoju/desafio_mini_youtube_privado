@@ -3,6 +3,7 @@ import { updateReduxStateArray } from '@utils/redux/updateRedux';
 import { AnyAction } from 'redux';
 import { RootStateType } from '.';
 import { getMock } from '../mocks/VideosMocks';
+import { AsyncStorage } from 'react-native';
 
 interface VideoDuck {
   videos: Video[];
@@ -72,10 +73,12 @@ export const favoriteVideo = ({ id }: { id: string }) => {
         //remover da lista de favoritos
         const newFavorites = favoriteVideos.filter((v) => v.id != id);
         dispatch({ type: SET_FAVORITE_VIDEOS, payload: newFavorites });
+        AsyncStorage.setItem('favorites', JSON.stringify(newFavorites));
       } else {
         //adicionar na lista de favoritos
         const newFavorites = [...favoriteVideos, newValue];
         dispatch({ type: SET_FAVORITE_VIDEOS, payload: newFavorites });
+        AsyncStorage.setItem('favorites', JSON.stringify(newFavorites));
       }
 
       const payload = updateReduxStateArray({

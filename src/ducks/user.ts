@@ -1,3 +1,4 @@
+import { AsyncStorage } from 'react-native';
 import { AnyAction } from 'redux';
 
 interface UserDuck {
@@ -34,7 +35,8 @@ export const submitLogin = ({
 }) => {
   return async (dispatch: any) => {
     dispatch({ type: INIT_LOGIN });
-    setTimeout(function () {
+    setTimeout(async function () {
+      await AsyncStorage.setItem('login', login);
       dispatch({ type: LOGIN_USER, payload: login }, callback());
     }, 5000);
   };
