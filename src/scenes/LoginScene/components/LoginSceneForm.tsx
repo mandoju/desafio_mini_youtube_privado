@@ -17,7 +17,7 @@ export const LoginSceneFormWithoutFormik = ({
   touched,
 }: FormikProps<LoginSceneFormValues>) => {
   return (
-    <>
+    <View style={{}}>
       <Input
         label="Email"
         placeholder="Digite seu Email aqui"
@@ -34,10 +34,12 @@ export const LoginSceneFormWithoutFormik = ({
         onChangeText={(text) => setFieldValue('password', text)}
         errorMessage={touched.password ? errors.password : ''}
       />
-      <View style={{ flex: 1 / 3, alignItems: 'center', paddingTop: 10 }}>
-        <Button title={'Entrar'} onPress={handleSubmit} />
+      <View style={{ flex: 0, paddingTop: 10, alignItems: 'center' }}>
+        <View style={{ flex: 0, width: '33%' }}>
+          <Button title={'Entrar'} onPress={handleSubmit} />
+        </View>
       </View>
-    </>
+    </View>
   );
 };
 

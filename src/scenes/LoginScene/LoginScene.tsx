@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { LoginSceneForm } from './components/LoginSceneForm';
+import { LoginSceneLogo } from './components/LoginSceneLogo';
 
 export const LoginScene = () => {
   return (
@@ -15,7 +16,7 @@ export const LoginScene = () => {
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
     >
       <View style={styles.topContainer}>
-        <Text>Logo</Text>
+        <LoginSceneLogo />
       </View>
       <View style={styles.centerContainer}>
         <LoginSceneForm />
@@ -36,21 +37,17 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingHorizontal: '3%',
   },
-  bottomContainer: {
+  topContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
   },
   centerContainer: {
-    flex: 2,
-    minHeight: 230,
-    backgroundColor: '#FFF',
-    justifyContent: 'center',
+    flex: 0,
+    height: 280,
   },
-  topContainer: {
+  bottomContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });
