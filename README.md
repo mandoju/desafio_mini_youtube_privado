@@ -8,6 +8,7 @@ Este desafio foi criado utilizando ``react-native`` utilizando o framework ``exp
 - Lista de vídeos que carregam de 3 em 3 (novos vídeos carregados ao final)
 - Telas de detalhes do vídeo com descrição (apenas clicar no vídeo)
 - Tela de vídeos favoritos
+- Tela de conta do usuário (para poder deslogar)
 - Login automático
 
 
