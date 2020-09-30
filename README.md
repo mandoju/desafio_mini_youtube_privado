@@ -3,7 +3,13 @@ desafio_mini_youtube_privado
 # Desafio do mini youtube privado
 
 ## Introdução
-Este desafio foi criado utilizando ``react-native`` utilizando o framework ``expo`` para facilitar o desenvolvimento. Todas as requisições são mockadas. Neste projeto é possível logar,ver uma lista de vídeos que são carregados de 3 em 3, clicar neles para ver a descrição (tela de detalhes), e também se clicar na estrela você favorita os vídeos. O aplicativo também armazena teu login para você não precisar logar normalmente.
+Este desafio foi criado utilizando ``react-native`` utilizando o framework ``expo`` para facilitar o desenvolvimento. Todas as requisições são mockadas. Este projeto possui as seguintes features: 
+- Tela de login (você pode logar com qualquer combinação de usuário e senha, está sem validação de back)
+- Lista de vídeos que carregam de 3 em 3 (novos vídeos carregados ao final)
+- Telas de detalhes do vídeo com descrição (apenas clicar no vídeo)
+- Tela de vídeos favoritos
+- Login automático
+
 
 ## Requisitos 
 

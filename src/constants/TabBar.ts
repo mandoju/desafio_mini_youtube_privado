@@ -1,5 +1,5 @@
 export const TabBarIcons = [
   { key: 'VIDEOS', value: 'play-arrow' },
-  { key: 'FAVORITELIST', value: 'star' },
+  { key: 'FAVORITES', value: 'star' },
   { key: 'SETTINGS', value: 'settings' },
 ];

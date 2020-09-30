@@ -7,9 +7,9 @@ import {
   StyleSheet,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import { VideoListItem } from '../../components/video/VideoListItem';
+import { VideoListItem } from '@components/video/VideoListItem';
 import { useDispatch } from 'react-redux';
-import video, { getVideos } from '@ducks/video';
+import { getVideos } from '@ducks/video';
 
 export const VideoListScene = () => {
   const videos = useSelector((state: RootStateType) => state.video.videos);
@@ -35,7 +35,9 @@ export const VideoListScene = () => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={videos}
-        renderItem={({ item }) => <VideoListItem video={item} />}
+        renderItem={({ item }) => (
+          <VideoListItem video={item} detailSceneKey={'videoDetail'} />
+        )}
         onEndReached={() => {
           if (pageIndex < 2) {
             dispatch(getVideos({ pageIndex: pageIndex + 1 }));

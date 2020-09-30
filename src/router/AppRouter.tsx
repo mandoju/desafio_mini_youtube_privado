@@ -5,6 +5,7 @@ import { VideoListScene } from '@scenes/VideoListScene/VideoListScene';
 import { AuthScene } from '@scenes/AuthScene/AuthScene';
 import AppTabBar from '@components/router/AppTabBar';
 import { VideoDetailScene } from '@scenes/VideoDetailScene/VideoDetailScene';
+import { FavoriteVideoListScene } from '@scenes/FavoriteVideoListScene/FavoriteListScene';
 
 export const AppRouter = () => {
   return (
@@ -39,12 +40,20 @@ export const AppRouter = () => {
               back={true}
             />
           </Scene>
-          <Scene
-            key="favoriteList"
-            component={VideoListScene}
-            title="Lista de Vídeos"
-            hideNavBar={true}
-          />
+          <Scene key="favorites" hideNavBar={true}>
+            <Scene
+              key="favoritesList"
+              component={FavoriteVideoListScene}
+              title="Lista de Vídeos Favoritos"
+              hideNavBar={true}
+            />
+            <Scene
+              key="favoriteDetail"
+              component={VideoDetailScene}
+              title="Detalhe do favorito"
+              back={true}
+            />
+          </Scene>
           <Scene
             key="settings"
             component={VideoListScene}
