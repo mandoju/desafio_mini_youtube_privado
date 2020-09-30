@@ -11,7 +11,7 @@ Este desafio foi criado utilizando ``react-native`` utilizando o framework ``exp
 - Tela de conta do usuário (para poder deslogar)
 - Login automático
 - Testes Automatizados com jest (possui apenas 1 devido ao tempo)
-
+- Utilização de gitflow
 
 ## Requisitos 
 
