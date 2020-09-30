@@ -4,6 +4,7 @@ import { LoginScene } from '@scenes/LoginScene';
 import { VideoListScene } from '@scenes/VideoListScene/VideoListScene';
 import { AuthScene } from '@scenes/AuthScene/AuthScene';
 import AppTabBar from '@components/router/AppTabBar';
+import { VideoDetailScene } from '@scenes/VideoDetailScene/VideoDetailScene';
 
 export const AppRouter = () => {
   return (
@@ -23,15 +24,23 @@ export const AppRouter = () => {
           hideNavBar={true}
         />
         <Tabs key={'main'} tabBarComponent={AppTabBar}>
+          <Scene key="videos" hideNavBar={true} initial={true}>
+            <Scene
+              key="videoList"
+              component={VideoListScene}
+              title="Lista de Vídeos"
+              hideNavBar={true}
+              initial={true}
+            />
+            <Scene
+              key="videoDetail"
+              component={VideoDetailScene}
+              title="Detalhe do vídeo"
+              back={true}
+            />
+          </Scene>
           <Scene
-            key="videoList"
-            component={VideoListScene}
-            title="Lista de Vídeos"
-            hideNavBar={true}
-            initial={true}
-          />
-          <Scene
-            key="favoriteListe"
+            key="favoriteList"
             component={VideoListScene}
             title="Lista de Vídeos"
             hideNavBar={true}
