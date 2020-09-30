@@ -11,7 +11,7 @@ Este desafio foi criado utilizando ``react-native`` utilizando o framework ``exp
 - Tela de conta do usuário (para poder deslogar)
 - Login automático
 - Testes Automatizados com jest (possui apenas 1 devido ao tempo)
-
+- Utilização de gitflow
 
 ## Requisitos 
 
@@ -51,3 +51,4 @@ Devido ao curto espaço de tempo, o projeto possui alguns problemas:
 - Melhorias na interface em geral
 - Testar melhor em aparelhos Android ( o desenvolvimento foi feito focado no Ios)
 - Verificar maior gama de telas (como iphone 11, tablets e afins)
+- Implementar um CI para rodar os testes automatizados na dev e master
