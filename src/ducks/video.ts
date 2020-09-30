@@ -46,11 +46,16 @@ export const getVideos = ({
   return async (dispatch: any, getState: () => RootStateType) => {
     dispatch({ type: START_LOADING_MORE_VIDEOS });
     setTimeout(function () {
+      const { favoriteVideos } = getState().video;
       dispatch({ type: STOP_LOADING_MORE_VIDEOS });
       if (pageIndex < 2) {
         const old_videos = getState().video.videos;
-        const new_videos = getMock(pageIndex);
-        if (new_videos) {
+        const videos_request = getMock(pageIndex);
+        if (videos_request) {
+          const new_videos = videos_request.map((vr) => ({
+            ...vr,
+            favorite: !!favoriteVideos.find((fv) => fv.id == vr.id),
+          }));
           const payload = [...old_videos, ...new_videos];
           dispatch({ type: SET_VIDEOS, payload });
         }
