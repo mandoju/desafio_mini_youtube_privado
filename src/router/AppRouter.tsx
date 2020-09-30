@@ -6,6 +6,7 @@ import { AuthScene } from '@scenes/AuthScene/AuthScene';
 import AppTabBar from '@components/router/AppTabBar';
 import { VideoDetailScene } from '@scenes/VideoDetailScene/VideoDetailScene';
 import { FavoriteVideoListScene } from '@scenes/FavoriteVideoListScene/FavoriteListScene';
+import { SettingsScene } from '@scenes/SettingsScene/SettingsScene';
 
 export const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ export const AppRouter = () => {
       <Stack key="root">
         <Scene
           key="auth"
+          type={'reset'}
           component={AuthScene}
           title="Login"
           hideNavBar={true}
@@ -56,8 +58,8 @@ export const AppRouter = () => {
           </Scene>
           <Scene
             key="settings"
-            component={VideoListScene}
-            title="Lista de Vídeos"
+            component={SettingsScene}
+            title="Configuracoes"
             hideNavBar={true}
           />
         </Tabs>
