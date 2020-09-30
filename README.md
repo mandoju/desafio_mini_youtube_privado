@@ -1,5 +1,3 @@
-desafio_mini_youtube_privado
-
 # Desafio do mini youtube privado
 
 ## Introdução
